@@ -1,9 +1,9 @@
-#include "./game.cpp"
-#include "./util.cpp"
+#include "./deps.h"
+#include "./util.cc"
+#include "./game.cc"
 
 int main() {
-  pre();
-
+  Util::pre();
   auto game = Game::New();
 
 entry : {
@@ -23,12 +23,26 @@ entry : {
 }
 
 game : {
-  Display::clearWindow();
+  for (; game.status == Game::Proceed;) {
+    Display::clearWindow();
+    game.recover();
+    char direct = getch();
+    if (Behavior::isQuit(direct)) goto entry;
+    game.move(Behavior::getArrow(direct));
+  }
 
-  char direct;
+  Display::clearWindow();
+  game.recover();
+
+  if (game.status == Game::Win) {
+    Color::red("YOU WIN!");
+  } else {
+    Color::red("You Failed!");
+  }
+
   for (;;) {
-    direct = getch();
-    goto entry;
+    char direct = getch();
+    if (Behavior::isQuit(direct)) goto entry;
   }
 
   goto quit;
@@ -63,9 +77,9 @@ direct : {
       goto help;
     case Hint::QUIT:
       goto quit;
-    default:
-      goto undefined;
   }
+
+  goto undefined;
 }
 
 quit:
