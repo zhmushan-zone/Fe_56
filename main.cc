@@ -37,7 +37,7 @@ game : {
   if (game.status == Game::Win) {
     Color::red("YOU WIN!");
   } else {
-    Color::red("You Failed!");
+    Color::red("YOU FAILED!");
   }
 
   for (;;) {

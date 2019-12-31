@@ -16,7 +16,7 @@ class RandomSet {
   bool empty() {
     return vec.empty();
   }
-  uint64 size() {
+  u64 size() {
     return vec.size();
   }
   void clear() {

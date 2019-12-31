@@ -1,6 +1,3 @@
-typedef unsigned int uint;
-typedef unsigned long uint64;
-
 namespace Hint {
 
 enum Key {
@@ -12,7 +9,7 @@ enum Key {
 
 static std::string list[] = {"> New game", "> History", "> Help", "> Quit"};
 static int selected = 0;
-static uint listSize = sizeof(list) / sizeof(list[0]);
+static u32 listSize = sizeof(list) / sizeof(list[0]);
 static void next() {
   ++selected;
   if (selected >= listSize) selected = listSize - 1;
@@ -171,5 +168,5 @@ static void pre() {
   Element::init();
 }
 // result ∈ [from, to)
-static uint random(int from, int to) { return (rand() % (to - from)) + from; }
+static u32 random(int from, int to) { return (rand() % (to - from)) + from; }
 }  // namespace Util
