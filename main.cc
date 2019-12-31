@@ -1,6 +1,7 @@
 #include "./deps.h"
 #include "./util.cc"
 #include "./game.cc"
+#include "./fxxk.cc"
 
 int main() {
   Util::pre();
@@ -10,7 +11,9 @@ entry : {
   Display::clearWindow();
   Display::entry();
 
+_tmp:
   char direct = getch();
+  if (Fxxk::handler(direct)) goto _tmp;
   if (Behavior::isEnter(direct)) goto direct;
 
   auto arrow = Behavior::getArrow(direct);
