@@ -1,4 +1,5 @@
 #include <conio.h>
+#include <Windows.h>
 #include <stdlib.h>
 #include <time.h>
 #include <iostream>

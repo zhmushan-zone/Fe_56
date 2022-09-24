@@ -164,6 +164,7 @@ static void init() {
 
 namespace Util {
 static void pre() {
+  SetConsoleOutputCP(CP_UTF8);
   srand(time(NULL));
   Element::init();
 }
